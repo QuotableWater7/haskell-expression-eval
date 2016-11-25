@@ -2,13 +2,12 @@ import Tokenize (tokenize)
 import RpnConverter (convertToRpn)
 import EvalExpression (solveRpnTokens)
 
+evaluate = solveRpnTokens . convertToRpn . tokenize
+
 main = do
   userInput <- getLine
   if userInput == ""
     then return ()
     else do
-      let tokens = tokenize userInput
-      let rpnTokens = convertToRpn tokens
-      let results = solveRpnTokens rpnTokens
-      print results
+      print $ evaluate userInput
       main
