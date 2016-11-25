@@ -2,7 +2,6 @@ module RpnConverter where
 
 import Token
 
-convertToRpn [a] = [a]
 convertToRpn tokens = let (remainingOps, output) = break tokens ([], []) in output ++ remainingOps
   where
     break [] tuples = tuples
