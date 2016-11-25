@@ -2,7 +2,7 @@ module Lexer where
 
 import Data.Char (isDigit)
 
-data Token = PlusToken | MinusToken | MultToken | DivToken | IntToken Int deriving (Show)
+import Token
 
 lexer :: String -> [Token]
 
