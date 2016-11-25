@@ -4,7 +4,12 @@ import EvalExpression
 import Token
 
 main = do
-  let tokens = lexer "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3"
-  let rpnTokens = convertToRpn tokens
-  let results = solveRpnTokens rpnTokens
-  print results
+  userInput <- getLine
+  if userInput == ""
+    then return ()
+    else do
+      let tokens = lexer userInput
+      let rpnTokens = convertToRpn tokens
+      let results = solveRpnTokens rpnTokens
+      print results
+      main
