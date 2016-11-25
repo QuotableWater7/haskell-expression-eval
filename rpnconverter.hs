@@ -2,9 +2,6 @@ module RpnConverter where
 
 import Token
 
-isLeftParen LeftParen = True
-isLeftParen _ = False
-
 convertToRpn [a] = [a]
 convertToRpn tokens = let (remainingOps, output) = break tokens ([], []) in output ++ remainingOps
   where
@@ -14,6 +11,8 @@ convertToRpn tokens = let (remainingOps, output) = break tokens ([], []) in outp
     break (t@RightParen:ts) (opStack, outputStack) =
       let (toPop, (_:toRemain)) = span (not . isLeftParen) opStack
         in break ts (toRemain, outputStack ++ (reverse toPop))
+        where isLeftParen LeftParen = True
+              isLeftParen _ = False
     break (o1@(OpToken _):ts) (opStack, outputStack) =
       let (a, b) = span (shouldPop o1) opStack
         in break ts (o1:b, outputStack ++ (reverse a))
