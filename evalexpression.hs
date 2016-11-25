@@ -8,5 +8,5 @@ solveRpnTokens = head . foldl foldingFunction []
         foldingFunction (x:y:ys) (OpToken '+') = (x + y):ys
         foldingFunction (x:y:ys) (OpToken '-') = (y - x):ys
         foldingFunction (x:y:ys) (OpToken '*') = (x * y):ys
-        foldingFunction (x:y:ys) (OpToken '/') = (x / y):ys
+        foldingFunction (x:y:ys) (OpToken '/') = (y / x):ys
         foldingFunction (x:y:ys) (OpToken '^') = (x ** y):ys
