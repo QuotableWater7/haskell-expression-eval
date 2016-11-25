@@ -1,14 +1,13 @@
-import Lexer
-import RpnConverter
-import EvalExpression
-import Token
+import Tokenize (tokenize)
+import RpnConverter (convertToRpn)
+import EvalExpression (solveRpnTokens)
 
 main = do
   userInput <- getLine
   if userInput == ""
     then return ()
     else do
-      let tokens = lexer userInput
+      let tokens = tokenize userInput
       let rpnTokens = convertToRpn tokens
       let results = solveRpnTokens rpnTokens
       print results
