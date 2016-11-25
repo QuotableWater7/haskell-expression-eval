@@ -5,7 +5,7 @@ import Token
 convertToRpn tokens = let (remainingOps, output) = break tokens ([], []) in output ++ remainingOps
   where
     break [] tuples = tuples
-    break (t@(FloatToken i):ts) (opStack, outputStack) = break ts (opStack, outputStack ++ [t])
+    break (t@(FloatToken _):ts) (opStack, outputStack) = break ts (opStack, outputStack ++ [t])
     break (t@LeftParen:ts) (opStack, outputStack) = break ts (t:opStack, outputStack)
     break (t@RightParen:ts) (opStack, outputStack) =
       let (toPop, (_:toRemain)) = span (not . isLeftParen) opStack
