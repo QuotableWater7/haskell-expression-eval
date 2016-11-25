@@ -1,6 +1,6 @@
 module Token where
 
-data Token = OpToken Char | FloatToken Float deriving (Show, Eq)
+data Token = LeftParen | RightParen | OpToken Char | FloatToken Float deriving (Show, Eq)
 
 isLeftAssociative (OpToken '+') = True
 isLeftAssociative (OpToken '-') = True

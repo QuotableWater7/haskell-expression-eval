@@ -16,3 +16,7 @@ lexer ('+':xs) = OpToken '+' : lexer xs
 lexer ('-':xs) = OpToken '-' : lexer xs
 lexer ('/':xs) = OpToken '/' : lexer xs
 lexer ('*':xs) = OpToken '*' : lexer xs
+lexer ('^':xs) = OpToken '^' : lexer xs
+
+lexer ('(':xs) = LeftParen : lexer xs
+lexer (')':xs) = RightParen : lexer xs
