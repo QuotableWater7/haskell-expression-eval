@@ -4,10 +4,15 @@ import EvalExpression (solveRpnTokens)
 
 evaluate = solveRpnTokens . convertToRpn . tokenize
 
-main = do
-  userInput <- getLine
-  if userInput == ""
+evaluateLoop expression = do
+  let result = evaluate expression
+  print result
+
+  nextOp <- getLine
+
+  if nextOp == ""
     then return ()
     else do
-      print $ evaluate userInput
-      main
+      evaluateLoop $ (show result) ++ nextOp
+
+main = getLine >>= evaluateLoop
