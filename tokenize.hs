@@ -1,7 +1,6 @@
 module Tokenize where
 
 import Data.Char (isDigit)
-import Data.Text (splitOn)
 
 import Token
 
