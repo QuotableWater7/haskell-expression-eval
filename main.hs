@@ -6,11 +6,13 @@ evaluate = solveRpnTokens . convertToRpn . tokenize
 
 evaluateLoop expression = do
   nextOp <- getLine
-  if nextOp == ""
+  if nextOp == "q"
     then return ()
-  else do
-    let result = evaluate $ expression ++ nextOp
-    print result
-    evaluateLoop (show result)
+    else if nextOp == "r"
+      then evaluateLoop ""
+      else do
+        let result = (evaluate $ expression ++ nextOp)
+        print result
+        evaluateLoop . show $ result
 
 main = evaluateLoop ""
